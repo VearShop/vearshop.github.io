@@ -1,381 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
 <meta charset="UTF-8">
 <title>VEAR Official</title>
 <link rel="icon" href="Ve.png" type="image/png">
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at top,#003a70,#001a33 60%,#000814);
+color:#f2f2f2;
+overflow-x:hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #181818;
-  color: #f2f2f2;
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
 }
 
 /* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #121212;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(10,15,25,0.8);
+backdrop-filter:blur(8px);
+position:sticky;
+top:0;
+z-index:1000;
+border-bottom:1px solid rgba(77,166,255,0.2);
 }
 
-.navbar img {
-  height: 40px;
+.navbar img{
+height:40px;
+filter:drop-shadow(0 0 6px #4da6ff);
 }
 
-.navbar a {
-  color: #f2f2f2;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 14px;
-  letter-spacing: 1px;
+.navbar a{
+color:#cfe9ff;
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+letter-spacing:1px;
+transition:.3s;
 }
 
-.navbar a:hover {
-  color: #aaa;
+.navbar a:hover{
+color:#4da6ff;
+text-shadow:0 0 8px #4da6ff,0 0 18px #4da6ff;
 }
 
-/* HERO SLIDER */
-.hero-slider {
-  position: relative;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+/* HERO */
+.hero-slider{
+position:relative;
+height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden
 }
 
-.slide {
-  position: absolute;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+.slide{
+position:absolute;
+width:100%;
+opacity:0;
+transition:opacity 1s ease-in-out
 }
 
-.slide.active {
-  opacity: 1;
+.slide.active{opacity:1}
+
+.slide h1{
+font-size:42px;
+margin-bottom:15px;
+color:#e6f4ff;
+text-shadow:0 0 10px #4da6ff,0 0 30px rgba(77,166,255,.6);
 }
 
-.slide h1 {
-  font-size: 42px;
-  margin-bottom: 15px;
-}
-
-.slide p {
-  font-size: 18px;
-  color: #aaa;
+.slide p{
+font-size:18px;
+color:#9ccfff
 }
 
 /* PRODUCTS */
-.products {
-  padding: 80px 20px;
-  max-width: 1100px;
-  margin: auto;
+.products{padding:80px 20px;max-width:1100px;margin:auto}
+
+.products h2{
+text-align:center;
+margin-bottom:40px;
+letter-spacing:2px;
+color:#d9eeff;
+text-shadow:0 0 10px #4da6ff;
 }
 
-.products h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  letter-spacing: 2px;
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+
+.card{
+background:rgba(20,30,45,0.8);
+border-radius:14px;
+overflow:hidden;
+transition:transform .35s,box-shadow .35s;
+border:1px solid rgba(77,166,255,0.15);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 25px rgba(77,166,255,.35);
 }
 
-.card {
-  background: #222;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+background:#333;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+.card .info{padding:20px}
+
+.card h3{
+margin-bottom:10px;
+font-size:16px;
+color:#e6f4ff;
 }
 
-.card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  background: #333;
+.card p{
+margin-bottom:15px;
+color:#9ccfff;
+font-size:14px;
 }
 
-.card .info {
-  padding: 20px;
+.card button{
+width:100%;
+padding:10px 0;
+background:linear-gradient(90deg,#2563eb,#4da6ff);
+border:none;
+border-radius:8px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 10px rgba(77,166,255,.5);
 }
 
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.card p {
-  margin-bottom: 15px;
-  color: #aaa;
-  font-size: 14px;
-}
-
-.card button {
-  width: 100%;
-  padding: 10px 0;
-  background: #444;
-  border: none;
-  border-radius: 6px;
-  color: #f2f2f2;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.card button:hover {
-  background: #666;
+.card button:hover{
+transform:scale(1.05);
+box-shadow:0 0 18px #4da6ff,0 0 30px rgba(77,166,255,.7);
 }
 
 /* SECTIONS */
-.section {
-  padding: 80px 20px;
-  max-width: 800px;
-  margin: auto;
-  text-align: center;
+.section{padding:80px 20px;max-width:800px;margin:auto;text-align:center}
+
+.section h2{
+color:#d9eeff;
+text-shadow:0 0 10px #4da6ff;
 }
 
-.section p {
-  color: #aaa;
-  margin-top: 20px;
-  line-height: 1.6;
+.section p{
+color:#9ccfff;
+margin-top:20px;
+line-height:1.6
 }
 
-.contact input,
-.contact textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 6px;
-  background: #222;
-  color: white;
+/* FORMS */
+.contact input,.contact textarea{
+width:100%;
+padding:12px;
+margin-top:15px;
+border:none;
+border-radius:8px;
+background:rgba(20,30,45,0.8);
+color:white;
+border:1px solid rgba(77,166,255,0.2);
 }
 
-.contact button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #444;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
+.contact input:focus,.contact textarea:focus{
+outline:none;
+box-shadow:0 0 10px rgba(77,166,255,.5);
 }
 
-.contact button:hover {
-  background: #666;
+.contact button{
+margin-top:20px;
+padding:12px 25px;
+background:linear-gradient(90deg,#2563eb,#4da6ff);
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+box-shadow:0 0 12px rgba(77,166,255,.5);
+transition:.3s;
 }
 
-footer {
-  text-align: center;
-  padding: 30px;
-  font-size: 13px;
-  color: #777;
+.contact button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #4da6ff,0 0 35px rgba(77,166,255,.8);
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .navbar a {
-    margin-left: 0;
-  }
-  .slide h1 {
-    font-size: 28px;
-  }
-  .card img {
-    height: 200px;
-  }
+footer{
+text-align:center;
+padding:30px;
+font-size:13px;
+color:#7fbfff;
+text-shadow:0 0 6px rgba(77,166,255,.5);
+}
+
+@media(max-width:600px){
+.navbar{flex-direction:column;gap:15px}
+.navbar a{margin-left:0}
+.slide h1{font-size:28px}
+.card img{height:200px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<div id="particles-js"></div>
+
 <div class="navbar">
-  <img src="Ve.png" alt="VEAR Logo">
-  <div>
-    <a href="#home">HOME</a>
-    <a href="#products">PRODUCTS</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
-    <a href="#contact">FEEDBACK</a>
-  </div>
+<img src="Ve.png" alt="VEAR Logo">
+<div>
+<a href="#home">HOME</a>
+<a href="#products">PRODUCTS</a>
+<a href="#about">ABOUT</a>
+<a href="#contact">CONTACT</a>
+<a href="#reports">FEEDBACK</a>
+</div>
 </div>
 
-<!-- HERO SLIDER -->
 <section class="hero-slider" id="home">
-  <div class="slide active">
-    <h1>VEAR OFFICIAL PRODUCTS</h1>
-    <p>Premium Products, Real Designs, No AI</p>
-  </div>
+<div class="slide active">
+<h1>VEAR OFFICIAL PRODUCTS</h1>
+<p>Premium Products, Real Designs, No AI</p>
+</div>
 
-  <div class="slide">
-    <h1>Artist Made Designs</h1>
-    <p>Supporting Real Creativity</p>
-  </div>
+<div class="slide">
+<h1>Artist Made Designs</h1>
+<p>Supporting Real Creativity</p>
+</div>
 
-  <div class="slide">
-    <h1>Wear the Difference</h1>
-    <p>Original. Authentic. VEAR.</p>
-  </div>
+<div class="slide">
+<h1>Wear the Difference</h1>
+<p>Original. Authentic. VEAR.</p>
+</div>
 
-    <div class="slide">
-    <h1>we only use authentic work </h1>
-    <p>credits for pure rainbolt for making and coding the website and others for helping us</p>
-  </div>
+<div class="slide">
+<h1>we only use authentic work</h1>
+<p>credits for pure rainbolt for making and coding the website and others for helping us</p>
+</div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products" id="products">
-  <h2>FEATURED</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="hoodie.jpg" alt="VEAR Hoodie">
-      <div class="info">
-        <h3>VEAR Hoodie</h3>
-        <p>$test</p>
-        <button onclick="buyProduct('VEAR Hoodie')">Buy Now</button>
-      </div>
-    </div>
-  </div>
-  
-  <h2>FEATURED</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="cgerbcap.jpg" alt="cgrb cap">
-      <div class="info">
-        <h3>CgRb hat</h3>
-        <p>$test</p>
-        <button onclick="buyProduct('CgRb hat')">Buy Now</button>
-      </div>
-    </div>
-  </div>
+<h2>FEATURED</h2>
+<div class="grid">
+
+<div class="card">
+<img src="hoodie.jpg" alt="VEAR Hoodie">
+<div class="info">
+<h3>VEAR Hoodie</h3>
+<p>$test</p>
+<button onclick="buyProduct('VEAR Hoodie')">Buy Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="cgerbcap.jpg" alt="cgrb cap">
+<div class="info">
+<h3>CgRb hat</h3>
+<p>$test</p>
+<button onclick="buyProduct('CgRb hat')">Buy Now</button>
+</div>
+</div>
+
+</div>
 </section>
 
-<!-- ABOUT -->
 <section class="section" id="about">
-  <h2>ABOUT VEAR</h2>
-  <p>
-    VEAR is a premium product company proving that artist-made art is better than AI art.
-  </p>
+<h2>ABOUT VEAR</h2>
+<p>VEAR is a premium product company proving that artist-made art is better than AI art.</p>
 </section>
 
 <section class="section contact" id="contact">
-  <h2>wanna work with us?</h2>
-
-  <input id="name" placeholder="Your Name">
-  <input id="email" placeholder="Your Email">
-  <textarea id="message" rows="5" placeholder="Your Message"></textarea>
-  <button onclick="sendMessage()">Send</button>
+<h2>wanna work with us?</h2>
+<input id="name" placeholder="Your Name">
+<input id="email" placeholder="Your Email">
+<textarea id="message" rows="5" placeholder="Your Message"></textarea>
+<button onclick="sendMessage()">Send</button>
 </section>
 
 <section class="section contact" id="reports">
-  <h2>reports & feedback</h2>
-
-  <input id="reportName" placeholder="Your Name">
-  <textarea id="reportMessage" rows="5" placeholder="Report or Feedback"></textarea>
-  <button onclick="sendReport()">Send</button>
+<h2>reports & feedback</h2>
+<input id="reportName" placeholder="Your Name">
+<textarea id="reportMessage" rows="5" placeholder="Report or Feedback"></textarea>
+<button onclick="sendReport()">Send</button>
 </section>
 
 <footer>
-  © 2026 VEAR. Logos and Designs are Copyrighted.
+© 2026 VEAR. Logos and Designs are Copyrighted.
 </footer>
 
-<script>
- document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".slide");
-  let current = 0;
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }, 4000);
+<script>
+particlesJS("particles-js",{
+particles:{
+number:{value:140},
+color:{value:"#4da6ff"},
+shape:{type:"circle"},
+opacity:{value:0.6},
+size:{value:3},
+line_linked:{enable:true,distance:150,color:"#4da6ff",opacity:0.4,width:1},
+move:{enable:true,speed:1.5}
+}
 });
 
-function buyProduct(productName) {
-  alert(productName + " purchase coming soon!");
+const slides=document.querySelectorAll(".slide");
+let current=0;
+setInterval(()=>{
+slides[current].classList.remove("active");
+current=(current+1)%slides.length;
+slides[current].classList.add("active");
+},4000);
+
+function buyProduct(productName){alert(productName+" purchase coming soon!");}
+
+function sendMessage(){
+const name=document.getElementById("name").value;
+const email=document.getElementById("email").value;
+const message=document.getElementById("message").value;
+
+fetch("https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({content:`📩 New VEAR Application\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`})
+})
+.then(()=>alert("Application sent successfully!"))
+.catch(()=>alert("Failed to send application."));
 }
 
+const REPORT_WEBHOOK="https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3";
+function sendReport(){
+const name=document.getElementById("reportName").value;
+const message=document.getElementById("reportMessage").value;
 
-function sendMessage() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  fetch("https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      content: `📩 New VEAR Application
-
-Name: ${name}
-Email: ${email}
-Message: ${message}`
-    })
-  })
-  .then(() => {
-    alert("Application sent successfully!");
-  })
-  .catch(() => {
-    alert("Failed to send application.");
-  });
-}
-
-const REPORT_WEBHOOK = "https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3";
-function sendReport() {
-  const name = document.getElementById("reportName").value;
-  const message = document.getElementById("reportMessage").value;
-
-  fetch(REPORT_WEBHOOK, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      content: `⚠️ New Report / Feedback
-
-Name: ${name}
-Message: ${message}`
-    })
-  })
-  .then(() => {
-    alert("Report / Feedback sent!");
-  })
-  .catch(() => {
-    alert("Failed to send report.");
-  });
+fetch(REPORT_WEBHOOK,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({content:`⚠️ New Report / Feedback\n\nName: ${name}\nMessage: ${message}`})
+})
+.then(()=>alert("Report / Feedback sent!"))
+.catch(()=>alert("Failed to send report."));
 }
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
