@@ -11,9 +11,10 @@
 <style>
 /* VEAR SYSTEM ARCHITECTURE 
    BRAND IDENTITY STYLESHEET 
+   CORE DESIGNER: HASNAIN
 */
-*{box-sizing:border-box;margin:0;padding:0;cursor: none !important;}
-html{scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0;padding:0; cursor: none !important;}
+html{scroll-behavior:smooth; background: #000;}
 
 body{
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -21,38 +22,39 @@ body{
     color: #f2f2f2;
     overflow-x: hidden;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 /* --- CUSTOM CURSOR SYSTEM --- */
 #cursor {
-    width: 20px;
-    height: 20px;
-    background: rgba(77, 166, 255, 0.4);
+    width: 20px; height: 20px;
+    background: rgba(77, 166, 255, 0.3);
     border: 1px solid #4da6ff;
     border-radius: 50%;
     position: fixed;
+    top: -50px; left: -50px; /* Hidden initially */
     pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    box-shadow: 0 0 20px #4da6ff;
+    z-index: 10001;
+    transition: transform 0.08s ease-out;
+    box-shadow: 0 0 15px #4da6ff;
+    display: block;
 }
 #cursor-follower {
-    width: 8px;
-    height: 8px;
+    width: 6px; height: 6px;
     background: #fff;
     border-radius: 50%;
     position: fixed;
+    top: -50px; left: -50px; /* Hidden initially */
     pointer-events: none;
-    z-index: 10000;
-    transition: transform 0.05s linear;
+    z-index: 10002;
+    transition: transform 0.02s linear;
+    display: block;
 }
 
 #particles-js{
     position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
     z-index: -1;
 }
 
@@ -73,7 +75,6 @@ body{
 .navbar.scrolled{
     padding: 12px 60px;
     background: rgba(0, 8, 20, 0.98);
-    border-bottom: 1px solid rgba(77, 166, 255, 0.3);
 }
 .navbar img{
     height: 45px;
@@ -95,201 +96,255 @@ body{
     transition: 0.3s;
     position: relative;
 }
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: #4da6ff;
-    transition: 0.3s;
-}
-.nav-links a:hover::after { width: 100%; }
 .nav-links a:hover{ color: #4da6ff; text-shadow: 0 0 10px #4da6ff; }
 
-/* --- HERO SYSTEM --- */
+/* --- HERO SYSTEM (AFAR) --- */
 .hero-slider{
     position: relative;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(77,166,255,0.05)" stroke-width="0.5"/></svg>');
+    margin-bottom: 300px; 
 }
 .slide{
     position: absolute;
     width: 80%;
     opacity: 0;
-    transform: scale(0.95);
-    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: scale(0.9) translateY(20px);
+    transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .slide.active{
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
 }
 .slide h1{
-    font-size: 64px;
-    margin-bottom: 20px;
+    font-size: 84px;
+    margin-bottom: 30px;
     color: #fff;
-    text-shadow: 0 0 20px rgba(77,166,255,0.8);
-    letter-spacing: 5px;
+    text-shadow: 0 0 30px rgba(77,166,255,0.6);
+    letter-spacing: 15px;
+    font-weight: 800;
 }
 .slide p{
-    font-size: 22px;
+    font-size: 24px;
     color: #9ccfff;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
+    letter-spacing: 2px;
 }
 
 /* --- REVEAL ANIMATIONS --- */
-.reveal{ opacity: 0; transform: translateY(50px); transition: 1s all ease; }
+.reveal{ opacity: 0; transform: translateY(80px); transition: 1.2s all ease-out; }
 .reveal.active{ opacity: 1; transform: translateY(0); }
 
-/* --- PRODUCT GRID --- */
+/* --- PRODUCT GRID (AFAR) --- */
+.products {
+    padding: 200px 0;
+    margin-top: 200px;
+}
 .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 .section-title {
     text-align: center;
-    margin-bottom: 60px;
-    font-size: 36px;
-    letter-spacing: 4px;
+    margin-bottom: 150px;
+    font-size: 48px;
+    letter-spacing: 12px;
     color: #fff;
+    text-transform: uppercase;
     text-shadow: 0 0 15px #4da6ff;
 }
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 80px; 
 }
 
 .card{
-    background: rgba(15, 25, 40, 0.6);
-    border-radius: 20px;
+    background: rgba(15, 25, 40, 0.4);
+    border-radius: 0px; 
     overflow: hidden;
-    border: 1px solid rgba(77,166,255,0.1);
+    border: 1px solid rgba(77, 166, 255, 0.1);
     backdrop-filter: blur(10px);
-    transition: 0.4s;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
 }
 .card:hover{
-    border-color: rgba(77,166,255,0.5);
-    box-shadow: 0 0 40px rgba(77,166,255,0.2);
+    border-color: rgba(77, 166, 255, 0.8);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 .card-img-container {
     width: 100%;
-    height: 320px;
+    height: 450px;
     background: #050a14;
     position: relative;
     overflow: hidden;
 }
 .card img{
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
-    transition: 0.6s;
+    transition: 0.8s;
 }
-.card:hover img { transform: scale(1.1); }
+.card:hover img { transform: scale(1.05); }
 
-.card-img-container::before {
-    content: "UNRELEASED DESIGN";
-    position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    color: rgba(77,166,255,0.3); font-size: 14px; font-weight: bold; letter-spacing: 3px;
-}
-
-.info{ padding: 30px; }
-.info h3{ font-size: 22px; color: #fff; margin-bottom: 10px; }
-.info .price { color: #4da6ff; font-weight: bold; font-size: 18px; margin-bottom: 15px; display: block; }
-.info p{ font-size: 14px; color: #9ccfff; margin-bottom: 25px; min-height: 42px; }
+.info{ padding: 40px; }
+.info h3{ font-size: 26px; color: #fff; margin-bottom: 15px; letter-spacing: 2px; }
+.info .price { color: #4da6ff; font-weight: bold; font-size: 20px; margin-bottom: 20px; display: block; }
+.info p{ font-size: 15px; color: #9ccfff; margin-bottom: 30px; opacity: 0.7; }
 
 .buy-btn{
     width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
-    border: none;
-    border-radius: 12px;
-    color: #fff;
+    padding: 18px;
+    background: transparent;
+    border: 1px solid #4da6ff;
+    color: #4da6ff;
     font-weight: 700;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    letter-spacing: 3px;
+    transition: 0.4s;
+    text-transform: uppercase;
 }
 .buy-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
-    filter: brightness(1.2);
+    background: #4da6ff;
+    color: #000;
+    box-shadow: 0 0 30px rgba(77, 166, 255, 0.4);
 }
 
 /* --- ARTIST SPOTLIGHT --- */
-.spotlight { background: rgba(0, 0, 0, 0.3); padding: 100px 0; margin-top: 100px; }
-.artist-flex { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
-.artist-image { flex: 1; min-width: 300px; border-radius: 30px; border: 2px solid #4da6ff; padding: 10px; }
-.artist-info { flex: 1; min-width: 300px; }
-.artist-info h2 { font-size: 48px; color: #4da6ff; margin-bottom: 20px; }
+.spotlight { background: rgba(0, 0, 0, 0.5); padding: 300px 0; margin-top: 300px; }
+.artist-flex { display: flex; align-items: center; gap: 100px; flex-wrap: wrap; }
+.artist-image { flex: 1; min-width: 400px; }
+.artist-info { flex: 1; min-width: 400px; }
+.artist-info h2 { font-size: 56px; color: #fff; margin-bottom: 40px; letter-spacing: 5px; }
 
-/* --- FORMS --- */
-.contact-container {
+/* --- REWORKED TERMINAL FORMS --- */
+.terminal-section {
+    padding: 150px 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 58, 112, 0.1), transparent);
+}
+.terminal-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-top: 50px;
 }
-.form-box {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid rgba(77, 166, 255, 0.1);
-}
-.form-box h2 { margin-bottom: 25px; text-align: left; }
-input, textarea {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
+.terminal-card {
+    background: rgba(5, 10, 20, 0.8);
     border: 1px solid rgba(77, 166, 255, 0.2);
-    padding: 15px;
-    border-radius: 12px;
+    position: relative;
+    padding: 40px;
+    overflow: hidden;
+}
+.terminal-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: #4da6ff;
+    box-shadow: 0 0 10px #4da6ff;
+}
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(77, 166, 255, 0.1);
+    padding-bottom: 15px;
+}
+.terminal-header h3 {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #4da6ff;
+    text-transform: uppercase;
+}
+.status-indicator {
+    font-size: 10px;
+    color: #00ff00;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.status-dot {
+    width: 6px; height: 6px;
+    background: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00ff00;
+    animation: blink 1.5s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.terminal-card input, .terminal-card textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(77, 166, 255, 0.1);
+    border-left: 3px solid #4da6ff;
+    padding: 15px 20px;
     color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
     margin-bottom: 20px;
+    outline: none;
     transition: 0.3s;
 }
-input:focus, textarea:focus { border-color: #4da6ff; outline: none; box-shadow: 0 0 15px rgba(77, 166, 255, 0.3); }
-
-/* --- NOTIFICATION --- */
-#notification {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 18px 30px;
-    background: rgba(30, 41, 59, 0.95);
-    color: #4da6ff;
-    border-radius: 12px;
-    border-left: 4px solid #4da6ff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transform: translateX(150%);
-    transition: 0.5s transform cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: 99999;
+.terminal-card input:focus, .terminal-card textarea:focus {
+    background: rgba(77, 166, 255, 0.05);
+    border-color: rgba(77, 166, 255, 0.5);
+    box-shadow: 0 0 15px rgba(77, 166, 255, 0.1);
 }
-#notification.show { transform: translateX(0); }
+.terminal-btn {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid #4da6ff;
+    color: #4da6ff;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.terminal-btn:hover {
+    background: #4da6ff;
+    color: #000;
+    box-shadow: 0 0 20px #4da6ff;
+}
 
 /* --- FOOTER --- */
 footer {
-    padding: 80px 20px;
-    background: #000814;
+    padding: 150px 20px;
+    background: #00040a;
     text-align: center;
     border-top: 1px solid rgba(77, 166, 255, 0.1);
 }
-.footer-logo { height: 60px; margin-bottom: 30px; opacity: 0.8; }
-.social-links { margin: 30px 0; }
-.social-links a { margin: 0 15px; color: #4da6ff; text-decoration: none; font-size: 20px; }
-   
+
+/* NOTIFICATION */
+#notification {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    padding: 15px 30px;
+    background: #001a33;
+    border: 1px solid #4da6ff;
+    color: #4da6ff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transform: translateY(100px);
+    transition: 0.5s;
+    z-index: 9999;
+}
+#notification.show { transform: translateY(0); }
+
+/* DATA BLOCK */
 .huge-data-block { display: none; }
 
 @media(max-width: 900px) {
-    .contact-container { grid-template-columns: 1fr; }
+    .slide h1 { font-size: 42px; }
+    .grid { gap: 40px; }
     .navbar { padding: 20px; }
-    .nav-links { display: none; }
-    #cursor, #cursor-follower { display: none; }
+    .terminal-grid { grid-template-columns: 1fr; }
+    #cursor, #cursor-follower { display: none !important; }
     * { cursor: auto !important; }
 }
 </style>
@@ -300,7 +355,7 @@ footer {
 <div id="cursor"></div>
 <div id="cursor-follower"></div>
 <div id="particles-js"></div>
-<div id="notification">System Active</div>
+<div id="notification">SYSTEM_READY</div>
 
 <nav class="navbar" id="mainNav">
     <img src="Ve.png" alt="VEAR Logo">
@@ -309,18 +364,18 @@ footer {
         <a href="#products">Collection</a>
         <a href="#about">Philosophy</a>
         <a href="#artist">The Artist</a>
-        <a href="#contact">Collaborate</a>
+        <a href="#terminal">Uplink</a>
     </div>
 </nav>
 
-    </div>
-    <div class="slide">
+<section class="hero-slider" id="home">
+    <div class="slide active">
         <h1>BEYOND THE PROMPT</h1>
         <p>AI can mimic patterns, but it cannot understand intent. VEAR products are born from sketches, sweat, and digital craftsmanship.</p>
     </div>
     <div class="slide">
-        <h1>COLLABRATION</h1>
-        <p>collab with us while using AI will be blocked.</p>
+        <h1>COLLABORATION</h1>
+        <p>Partnerships involving Generative AI will be permanently restricted. Human creativity is our only currency.</p>
     </div>
     <div class="slide">
         <h1>AUTHENTIC THREADS</h1>
@@ -329,67 +384,45 @@ footer {
 </section>
 
 <section class="products container" id="products">
-    <h2 class="section-title">COLLECTION</h2>
+    <h2 class="section-title">THE COLLECTION</h2>
     <div class="grid">
-        <!-- Expanded Product List -->
         <div class="card reveal">
-            <div class="card-img-container"><img src="hoodie.jpg" alt="VEAR 1.0" onerror="this.style.opacity='0'"></div>
+            <div class="card-img-container"><img src="hoodie.jpg" alt="V1" onerror="this.style.opacity='0.1'"></div>
             <div class="info">
-                <h3>V1 hoodie</h3>
-                <span class="price">$test</span>
-                <p>test.</p>
-                <button class="buy-btn" onclick="buyProduct('V1 Genesis Hoodie')">RESERVE UNIT</button>
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
             </div>
         </div>
 
         <div class="card reveal">
-            <div class="card-img-container"><img src="cgerbcap.jpg" alt="CgRb Cap" onerror="this.style.opacity='0'"></div>
+            <div class="card-img-container"><img src="cgerbcap.jpg" alt="Cap" onerror="this.style.opacity='0.1'"></div>
             <div class="info">
-                <h3>CgRb Tactical Cap</h3>
-                <span class="price">$test</span>
-                <p>test.</p>
-                <button class="buy-btn" onclick="buyProduct('CgRb Cap')">RESERVE UNIT</button>
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
             </div>
         </div>
 
         <div class="card reveal">
-            <div class="card-img-container"><img src="tee.jpg" alt="Vector Tee" onerror="this.style.opacity='0'"></div>
+            <div class="card-img-container"><img src="tee.jpg" alt="Tee" onerror="this.style.opacity='0.1'"></div>
             <div class="info">
-                <h3>Vector Logic Tee</h3>
-                <span class="price">$test</span>
-                <p>test.</p>
-                <button class="buy-btn" onclick="buyProduct('Vector Tee')">RESERVE UNIT</button>
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
             </div>
         </div>
 
         <div class="card reveal">
-            <div class="card-img-container"><img src="jacket.jpg" alt="Shell" onerror="this.style.opacity='0'"></div>
+            <div class="card-img-container"><img src="jacket.jpg" alt="Shell" onerror="this.style.opacity='0.1'"></div>
             <div class="info">
-                <h3>Rainbolt Tech Shell</h3>
-                <span class="price">$120.00</span>
-                <p>Advanced ripstop material. Integrated map-pattern lining designed by artists.</p>
-                <button class="buy-btn" onclick="buyProduct('Tech Shell')">RESERVE UNIT</button>
-            </div>
-        </div>
-        
-        <!-- Repeating cards with variation to build page weight -->
-        <div class="card reveal">
-            <div class="card-img-container"><img src="p5.jpg" alt="Artist Series" onerror="this.style.opacity='0'"></div>
-            <div class="info">
-                <h3>Artist Series: Ghost</h3>
-                <span class="price">$etst</span>
-                <p> test.</p>
-                <button class="buy-btn" onclick="buyProduct('Ghost Tee')">RESERVE UNIT</button>
-            </div>
-        </div>
-
-        <div class="card reveal">
-            <div class="card-img-container"><img src="p6.jpg" alt="Limited" onerror="this.style.opacity='0'"></div>
-            <div class="info">
-                <h3>Archival Denim</h3>
-                <span class="price">$test</span>
-                <p>test.</p>
-                <button class="buy-btn" onclick="buyProduct('Archival Denim')">RESERVE UNIT</button>
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
             </div>
         </div>
     </div>
@@ -399,109 +432,116 @@ footer {
     <div class="container">
         <div class="artist-flex">
             <div class="artist-image reveal">
-                <!-- Large SVG Pattern for weight -->
-                <svg width="100%" height="400" viewBox="0 0 400 400">
+                <svg width="100%" height="500" viewBox="0 0 500 500">
                     <defs>
-                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#4da6ff;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#003a70;stop-opacity:1" />
+                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#003a70;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4da6ff;stop-opacity:1" />
                         </linearGradient>
                     </defs>
-                    <path d="M200,50 L250,150 L350,200 L250,250 L200,350 L150,250 L50,200 L150,150 Z" fill="url(#g1)" />
-                    <circle cx="200" cy="200" r="120" stroke="#4da6ff" stroke-width="2" fill="none" />
-                    <text x="135" y="380" fill="#4da6ff" font-size="12" letter-spacing="5">CREATOR IDENTITY</text>
+                    <circle cx="250" cy="250" r="220" fill="none" stroke="#4da6ff" stroke-width="0.5" opacity="0.1" />
+                    <circle cx="250" cy="250" r="180" fill="none" stroke="#4da6ff" stroke-width="2" opacity="0.2" />
+                    <circle cx="250" cy="250" r="125" fill="url(#blueGrad)" fill-opacity="0.3" stroke="#fff" stroke-width="3" />
+                    <path d="M250,10 L295,205 L490,250 L295,295 L250,490 L205,295 L10,250 L205,205 Z" 
+                          fill="url(#blueGrad)" fill-opacity="0.6" stroke="#4da6ff" stroke-width="4" />
+                    <g transform="translate(250,250)">
+                        <circle cx="0" cy="-200" r="6" fill="#4da6ff" />
+                        <circle cx="0" cy="200" r="6" fill="#4da6ff" />
+                        <circle cx="200" cy="0" r="6" fill="#4da6ff" />
+                        <circle cx="-200" cy="0" r="6" fill="#4da6ff" />
+                        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="30s" repeatCount="indefinite" />
+                    </g>
+                    <text x="175" y="490" fill="#4da6ff" font-size="9" letter-spacing="12" opacity="0.6">CREATOR_IDENTITY_V1</text>
                 </svg>
             </div>
             <div class="artist-info reveal">
-                <h2>THE CREATOR:HASNAIN</h2>
-                <p>Coding is an art form. Design is a language. At VEAR, we merge the two. Pure Rainbolt leads our technical design team, ensuring that every pixel on this site and every stitch on our clothing is intentional.</p>
-                <p style="margin-top:20px">By supporting VEAR, you are voting for a future where humans stay at the center of the creative economy. We don't use "prompts". We use passion.</p>
+                <h2>CREATOR: HASNAIN</h2>
+                <p>Coding is an art form. Design is a language. At VEAR, we merge the two. Every pixel and every stitch is a deliberate choice.</p>
+                <p style="margin-top:40px">By supporting VEAR, you are voting for a future where humans stay at the center of the creative economy. We don't use "prompts". We use passion.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section reveal" id="about">
+<section class="terminal-section" id="terminal">
     <div class="container">
-        <h2 class="section-title">OUR PHILOSOPHY</h2>
-        <p style="font-size: 20px; max-width: 900px; margin: 0 auto;">In an era of mass-produced, algorithmically-generated noise, VEAR stands as a beacon for the individual. We believe that clothing is the final interface between the self and the world. It should be authentic, it should be complex, and it should be human.</p>
+        <h2 class="section-title" style="margin-bottom: 50px;">UPLINK PROTOCOL</h2>
+        <div class="terminal-grid">
+            <!-- Collaboration Terminal -->
+            <div class="terminal-card reveal">
+                <div class="terminal-header">
+                    <h3>[COLLABORATION_PORTAL]</h3>
+                    <div class="status-indicator"><div class="status-dot"></div> ENCRYPTED</div>
+                </div>
+                <input id="name" placeholder="> DESIGNER_ID_">
+                <input id="email" placeholder="> COMM_LINK_EMAIL_">
+                <textarea id="message" rows="4" placeholder="> INPUT_COLLAB_PROPOSAL_DATA_"></textarea>
+                <button class="terminal-btn" id="sendBtn" onclick="sendMessage()">EXECUTE_UPLINK</button>
+            </div>
+
+            <!-- Feedback Terminal -->
+            <div class="terminal-card reveal">
+                <div class="terminal-header">
+                    <h3>[SYSTEM_FEEDBACK]</h3>
+                    <div class="status-indicator"><div class="status-dot"></div> SECURE_LOG</div>
+                </div>
+                <input id="reportName" placeholder="> VISITOR_UID_">
+                <textarea id="reportMessage" rows="7" placeholder="> RECORD_FEEDBACK_LOG_ENTRIES_"></textarea>
+                <button class="terminal-btn" id="reportBtn" onclick="sendReport()">COMMIT_LOG</button>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="container" id="contact">
-    <div class="contact-container">
-        <div class="form-box reveal">
-            <h2>WANT TO WORK WITH US?</h2>
-            <p style="color: #4da6ff; margin-bottom: 20px; font-size: 14px;">Collaboration is the core of our brand. If you are an artist, designer, or creator—let's talk.</p>
-            <input id="name" placeholder="Legal Name">
-            <input id="email" placeholder="Contact Email">
-            <textarea id="message" rows="5" placeholder="Project Proposal / Portfolio Link"></textarea>
-            <button class="buy-btn" id="sendBtn" onclick="sendMessage()">INITIATE CONTACT</button>
-        </div>
-        <div class="form-box reveal" id="reports">
-            <h2>REPORTS & FEEDBACK</h2>
-            <p style="color: #4da6ff; margin-bottom: 20px; font-size: 14px;">Help us refine the VEAR experience. We value raw, honest input from our community.</p>
-            <input id="reportName" placeholder="Your Name">
-            <textarea id="reportMessage" rows="5" placeholder="Bug reports, design critiques, or praise."></textarea>
-            <button class="buy-btn" id="reportBtn" onclick="sendReport()">SUBMIT LOG</button>
-        </div>
-    </div>
-</section>
+<footer>
+    <p>© 2026 VEAR GLOBAL SYSTEMS. ALL PRODUCTS PROTECTED BY INTELLECTUAL COPYRIGHT.</p>
+    <p style="font-size: 10px; margin-top: 40px; color: #334155; letter-spacing: 5px;">ENCRYPTED VIA PURE RAINBOLT CORE • HASNAIN DESIGNED</p>
+</footer>
 
 <div class="huge-data-block">
-    <!-- 
-         The following block is repeated content and detailed documentation 
-         to increase file size while providing a technical backdrop 
-    -->
     <script>
-        const VEAR_ARCHIVE_DATA = {
-            version: "4.0.2",
-            artist: "Pure Rainbolt",
-            manifesto: Array(5000).fill("Real Art Matters. ").join(""),
-            metadata: {
-                layers: 400,
-                nodes: 2000,
-                colorProfile: "P3-D65",
-                security: "Discord Webhook Encrypted"
-            }
+        const VEAR_MASSIVE_METADATA = {
+            brand: "VEAR",
+            lead: "HASNAIN",
+            philosophy: "ANTI-AI",
+            blueprintArchive: Array(150000).fill("DESIGN_NODE_O1_X_O2_AUTHENTICITY_VERIFIED_").join("")
         };
-        const _buffer = new ArrayBuffer(1024 * 1024);
     </script>
 </div>
 
-<footer>
-
-    </div>
-    <p>© 2026 VEAR GLOBAL SYSTEMS. every product is protected by copyright</p>
-    <p style="font-size: 10px; margin-top: 20px; color: #334155; letter-spacing: 2px;">ENCRYPTED VIA PURE RAINBOLT CORE • AUTHENTICITY VERIFIED</p>
-</footer>
-
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
 <script>
-/* CORE ENGINE */
+/* CORE LOGIC */
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursor-follower');
 
 document.addEventListener('mousemove', e => {
-    cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
-    follower.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.transform = `translate(-50%, -50%)`;
+
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
+    follower.style.transform = `translate(-50%, -50%)`;
+});
+
+document.addEventListener('mousedown', () => {
+    cursor.style.transform = `translate(-50%, -50%) scale(0.8)`;
+    cursor.style.background = "rgba(77, 166, 255, 0.6)";
+});
+document.addEventListener('mouseup', () => {
+    cursor.style.transform = `translate(-50%, -50%) scale(1)`;
+    cursor.style.background = "rgba(77, 166, 255, 0.3)";
 });
 
 particlesJS("particles-js",{
     particles:{
-        number:{value:150, density:{enable:true, value_area:800}},
+        number:{value:80},
         color:{value:"#4da6ff"},
-        shape:{type:"circle"},
-        opacity:{value:0.5, random:true},
-        size:{value:2, random:true},
-        line_linked:{enable:true, distance:150, color:"#4da6ff", opacity:0.2, width:1},
-        move:{enable:true, speed:1, direction:"none", random:true, straight:false, out_mode:"out"}
-    },
-    interactivity:{
-        detect_on:"canvas",
-        events:{onhover:{enable:true, mode:"grab"}, onclick:{enable:true, mode:"push"}},
-        modes:{grab:{distance:200, line_linked:{opacity:0.5}}, push:{particles_nb:4}}
+        opacity:{value:0.3},
+        size:{value:2},
+        line_linked:{enable:true, distance:150, color:"#4da6ff", opacity:0.1, width:1},
+        move:{speed:1}
     }
 });
 
@@ -518,103 +558,54 @@ window.addEventListener('scroll', () => {
     else nav.classList.remove('scrolled');
 });
 
-/* HERO SLIDER ENGINE */
 const slides = document.querySelectorAll(".slide");
 let current = 0;
-const slideTimer = setInterval(() => {
+setInterval(() => {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
     slides[current].classList.add("active");
-}, 5000);
+}, 6000);
 
-/* INTERSECTION OBSERVER */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('active');
-        }
+        if(entry.isIntersecting) entry.target.classList.add('active');
     });
 }, { threshold: 0.1 });
-
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-/* 3D TILT ENGINE */
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = ((y - rect.height/2) / rect.height/2) * 10;
-        const rotateY = ((rect.width/2 - x) / rect.width/2) * 10;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-    });
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-    });
-});
+function buyProduct(name) { notify(`UNIT_RESERVED: ${name.toUpperCase()}`); }
 
-function buyProduct(name) {
-    notify(`UNIT ARCHIVED: ${name} is reserved for your account.`);
-}
-
-/* API GATEWAY FOR DISCORD */
 async function sendMessage() {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
-    const btn = document.getElementById("sendBtn");
-
-    if(!name || !email || !message) return notify("ERROR: Missing Required Data Fields");
-
-    btn.disabled = true;
-    btn.innerText = "TRANSMITTING...";
-
+    if(!name || !email || !message) return notify("DATA ERROR: FIELDS EMPTY");
+    
+    notify("TRANSMITTING...");
     try {
         await fetch("https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                content: `🚀 **NEW VEAR COLLABORATION REQUEST**\n\n**Artist Name:** ${name}\n**Contact:** ${email}\n**Project:** ${message}\n\n---`
-            })
+            body: JSON.stringify({ content: `🚀 **COLLAB REQUEST**\nName: ${name}\nEmail: ${email}\nMessage: ${message}` })
         });
-        notify("TRANSMISSION COMPLETE: Proposal Logged.");
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
-    } catch (e) {
-        notify("UPLINK ERROR: Please try again later.");
-    } finally {
-        btn.disabled = false;
-        btn.innerText = "INITIATE CONTACT";
-    }
+        notify("collabration sent");
+    } catch (e) { notify("UPLINK_FAILURE"); }
 }
 
 async function sendReport() {
     const name = document.getElementById("reportName").value.trim();
     const message = document.getElementById("reportMessage").value.trim();
-    const btn = document.getElementById("reportBtn");
+    if(!name || !message) return notify("DATA_ERROR: no message/name were filled");
 
-    if(!name || !message) return notify("ERROR: Provide ID and Log Content");
-
-    btn.disabled = true;
     try {
         await fetch("https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                content: `⚠️ **VEAR SYSTEM LOG ENTRY**\n\n**User ID:** ${name}\n**Log:** ${message}`
-            })
+            body: JSON.stringify({ content: `⚠️ **SYSTEM LOG**\nUser: ${name}\nLog: ${message}` })
         });
-        notify("LOG STORED: Feedback archived.");
-        document.getElementById("reportName").value = "";
-        document.getElementById("reportMessage").value = "";
-    } catch (e) {
-        notify("DATABASE OFFLINE.");
-    } finally {
-        btn.disabled = false;
-    }
+        notify("feedback sent");
+    } catch (e) { notify("feedback sent"); }
 }
 </script>
-
 </body>
 </html>
