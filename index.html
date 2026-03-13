@@ -381,6 +381,8 @@ footer {
         <h1>AUTHENTIC THREADS</h1>
         <p>Limited run releases. Once they are gone, the digital blueprint is archived forever. No reprints, no dilutions.</p>
     </div>
+    <div class="slide"
+     <h1>please help my boss doesnt pay me :(</h1>
 </section>
 
 <section class="products container" id="products">
@@ -428,7 +430,7 @@ footer {
     </div>
 </section>
 
-<section class="spotlight" id="artist">
+<section class="spotlight" id="owner">
     <div class="container">
         <div class="artist-flex">
             <div class="artist-image reveal">
@@ -463,14 +465,14 @@ footer {
     </div>
 </section>
 
-<section class="terminal-section" id="terminal">
+<section class="collabration.html" id="collabrations">
     <div class="container">
         <h2 class="section-title" style="margin-bottom: 50px;">UPLINK PROTOCOL</h2>
         <div class="terminal-grid">
             <!-- Collaboration Terminal -->
             <div class="terminal-card reveal">
                 <div class="terminal-header">
-                    <h3>[COLLABORATION_PORTAL]</h3>
+                    <h3>[COLLABORATION]</h3>
                     <div class="status-indicator"><div class="status-dot"></div> ENCRYPTED</div>
                 </div>
                 <input id="name" placeholder="> DESIGNER_ID_">
@@ -478,11 +480,9 @@ footer {
                 <textarea id="message" rows="4" placeholder="> INPUT_COLLAB_PROPOSAL_DATA_"></textarea>
                 <button class="terminal-btn" id="sendBtn" onclick="sendMessage()">EXECUTE_UPLINK</button>
             </div>
-
-            <!-- Feedback Terminal -->
-            <div class="terminal-card reveal">
-                <div class="terminal-header">
-                    <h3>[SYSTEM_FEEDBACK]</h3>
+            <div class="reveal">
+                <div class="feedbacks">
+                    <h3>[FEEDBACK]</h3>
                     <div class="status-indicator"><div class="status-dot"></div> SECURE_LOG</div>
                 </div>
                 <input id="reportName" placeholder="> VISITOR_UID_">
@@ -540,8 +540,8 @@ particlesJS("particles-js",{
         color:{value:"#4da6ff"},
         opacity:{value:0.3},
         size:{value:2},
-        line_linked:{enable:true, distance:150, color:"#4da6ff", opacity:0.1, width:1},
-        move:{speed:1}
+        line_linked:{enable:true, distance:150, color:"#4da6ff", opacity:1, width:1.5},
+        move:{speed:2}
     }
 });
 
@@ -601,7 +601,7 @@ async function sendReport() {
         await fetch("https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ content: `⚠️ **SYSTEM LOG**\nUser: ${name}\nLog: ${message}` })
+            body: JSON.stringify({ content: `⚠️ **NEW FEEDBACK!**\nUser: ${name}\nLog: ${message}` })
         });
         notify("feedback sent");
     } catch (e) { notify("feedback sent"); }
