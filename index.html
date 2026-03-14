@@ -25,13 +25,13 @@ body{
     min-height: 100vh;
 }
 
-/* --- SPLASH SCREEN SYSTEM --- */
+/* --- ADDED FROM SCRIPT 2: SPLASH SCREEN SYSTEM --- */
 #loader {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: #000;
-    z-index: 10000;
+    z-index: 20000; /* Higher than navbar */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,14 +57,14 @@ body{
     50% { transform: scale(1.1); opacity: 1; }
 }
 
-/* --- CUSTOM CURSOR SYSTEM --- */
+/* --- SCRIPT 1 ORIGINAL STYLES --- */
 #cursor {
     width: 20px; height: 20px;
     background: rgba(77, 166, 255, 0.3);
     border: 1px solid #4da6ff;
     border-radius: 50%;
     position: fixed;
-    top: -50px; left: -50px;
+    top: -50px; left: -50px; 
     pointer-events: none;
     z-index: 10001;
     transition: transform 0.08s ease-out;
@@ -90,7 +90,6 @@ body{
     z-index: -1;
 }
 
-/* --- NAVIGATION --- */
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -111,6 +110,11 @@ body{
 .navbar img{
     height: 45px;
     filter: drop-shadow(0 0 8px #4da6ff);
+    animation: logoPulse 4s infinite ease-in-out;
+}
+@keyframes logoPulse {
+    0%, 100% { filter: drop-shadow(0 0 5px #4da6ff); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 15px #4da6ff); transform: scale(1.08); }
 }
 .nav-links a{
     color: #cfe9ff;
@@ -125,7 +129,6 @@ body{
 }
 .nav-links a:hover{ color: #4da6ff; text-shadow: 0 0 10px #4da6ff; }
 
-/* --- HERO SYSTEM --- */
 .hero-slider{
     position: relative;
     height: 100vh;
@@ -163,16 +166,17 @@ body{
     letter-spacing: 2px;
 }
 
-/* --- REVEAL ANIMATIONS --- */
 .reveal{ opacity: 0; transform: translateY(80px); transition: 1.2s all ease-out; }
 .reveal.active{ opacity: 1; transform: translateY(0); }
 
-/* --- PRODUCT GRID --- */
-.products { padding: 100px 0; margin-top: 100px; }
+.products {
+    padding: 200px 0;
+    margin-top: 200px;
+}
 .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 .section-title {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     font-size: 48px;
     letter-spacing: 12px;
     color: #fff;
@@ -188,15 +192,29 @@ body{
 
 .card{
     background: rgba(15, 25, 40, 0.4);
+    border-radius: 0px; 
     overflow: hidden;
     border: 1px solid rgba(77, 166, 255, 0.1);
     backdrop-filter: blur(10px);
     transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
 }
-.card:hover{ border-color: rgba(77, 166, 255, 0.8); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
-.card-img-container { width: 100%; height: 450px; background: #050a14; position: relative; overflow: hidden; }
-.card img{ width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+.card:hover{
+    border-color: rgba(77, 166, 255, 0.8);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.card-img-container {
+    width: 100%;
+    height: 450px;
+    background: #050a14;
+    position: relative;
+    overflow: hidden;
+}
+.card img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: 0.8s;
+}
 .card:hover img { transform: scale(1.05); }
 
 .info{ padding: 40px; }
@@ -215,74 +233,147 @@ body{
     transition: 0.4s;
     text-transform: uppercase;
 }
-.buy-btn:hover { background: #4da6ff; color: #000; box-shadow: 0 0 30px rgba(77, 166, 255, 0.4); }
+.buy-btn:hover {
+    background: #4da6ff;
+    color: #000;
+    box-shadow: 0 0 30px rgba(77, 166, 255, 0.4);
+}
 
-/* --- TERMINAL FORMS --- */
-.terminal-section { padding: 150px 0; }
-.terminal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px; }
+.spotlight { background: rgba(0, 0, 0, 0.5); padding: 300px 0; margin-top: 300px; }
+.artist-flex { display: flex; align-items: center; gap: 100px; flex-wrap: wrap; }
+.artist-image { flex: 1; min-width: 400px; }
+.artist-info { flex: 1; min-width: 400px; }
+.artist-info h2 { font-size: 56px; color: #fff; margin-bottom: 40px; letter-spacing: 5px; }
+
+.terminal-section {
+    padding: 150px 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 58, 112, 0.1), transparent);
+}
+.terminal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
 .terminal-card {
     background: rgba(5, 10, 20, 0.8);
     border: 1px solid rgba(77, 166, 255, 0.2);
     position: relative;
     padding: 40px;
+    overflow: hidden;
 }
 .terminal-card::before {
-    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-    background: #4da6ff; box-shadow: 0 0 10px #4da6ff;
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: #4da6ff;
+    box-shadow: 0 0 10px #4da6ff;
 }
 .terminal-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 30px; border-bottom: 1px solid rgba(77, 166, 255, 0.1); padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(77, 166, 255, 0.1);
+    padding-bottom: 15px;
 }
-.terminal-header h3 { font-size: 14px; letter-spacing: 4px; color: #4da6ff; text-transform: uppercase; }
-.status-indicator { font-size: 10px; color: #00ff00; display: flex; align-items: center; gap: 8px; }
-.status-dot { width: 6px; height: 6px; background: #00ff00; border-radius: 50%; animation: blink 1.5s infinite; }
+.terminal-header h3 {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #4da6ff;
+    text-transform: uppercase;
+}
+.status-indicator {
+    font-size: 10px;
+    color: #00ff00;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.status-dot {
+    width: 6px; height: 6px;
+    background: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00ff00;
+    animation: blink 1.5s infinite;
+}
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
 .terminal-card input, .terminal-card textarea {
-    width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(77, 166, 255, 0.1);
-    border-left: 3px solid #4da6ff; padding: 15px 20px; color: #fff; font-family: 'Courier New', monospace;
-    font-size: 13px; margin-bottom: 20px; outline: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(77, 166, 255, 0.1);
+    border-left: 3px solid #4da6ff;
+    padding: 15px 20px;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: 0.3s;
+}
+.terminal-card input:focus, .terminal-card textarea:focus {
+    background: rgba(77, 166, 255, 0.05);
+    border-color: rgba(77, 166, 255, 0.5);
+    box-shadow: 0 0 15px rgba(77, 166, 255, 0.1);
+}
+.terminal-btn {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid #4da6ff;
+    color: #4da6ff;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.terminal-btn:hover {
+    background: #4da6ff;
+    color: #000;
+    box-shadow: 0 0 20px #4da6ff;
 }
 
-/* --- FOOTER --- */
-footer { padding: 100px 20px; background: #00040a; text-align: center; border-top: 1px solid rgba(77, 166, 255, 0.1); }
+footer {
+    padding: 150px 20px;
+    background: #00040a;
+    text-align: center;
+    border-top: 1px solid rgba(77, 166, 255, 0.1);
+}
 
-/* NOTIFICATION */
 #notification {
-    position: fixed; bottom: 30px; right: 30px; padding: 15px 30px;
-    background: #001a33; border: 1px solid #4da6ff; color: #4da6ff;
-    font-size: 12px; letter-spacing: 2px; transform: translateY(100px);
-    transition: 0.5s; z-index: 9999;
+    position: fixed;
+    bottom: 30px; right: 30px;
+    padding: 15px 30px;
+    background: #001a33;
+    border: 1px solid #4da6ff;
+    color: #4da6ff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transform: translateY(100px);
+    transition: 0.5s;
+    z-index: 9999;
 }
 #notification.show { transform: translateY(0); }
 
-/* MOBILE TOP BUTTON */
-#mobileTopBtn {
-    display: none; position: fixed; bottom: 25px; left: 25px; z-index: 99;
-    border: 1px solid #4da6ff; background: rgba(0, 10, 25, 0.8); color: #4da6ff;
-    padding: 12px; border-radius: 50%; font-size: 18px; box-shadow: 0 0 15px #4da6ff;
-    backdrop-filter: blur(5px); opacity: 0; transition: 0.3s;
-}
+.huge-data-block { display: none; }
 
-/* --- MOBILE OPTIMIZATION ENGINE --- */
 @media(max-width: 900px) {
-    * { cursor: auto !important; }
+    .slide h1 { font-size: 42px; }
+    .grid { gap: 40px; }
+    .navbar { padding: 20px; }
+    .terminal-grid { grid-template-columns: 1fr; }
     #cursor, #cursor-follower { display: none !important; }
-    #mobileTopBtn { display: block; }
-    .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
-    .nav-links a { margin: 0 10px; font-size: 10px; }
-    .slide h1 { font-size: 32px; letter-spacing: 5px; }
-    .slide p { font-size: 16px; padding: 0 20px; }
-    .hero-slider { margin-bottom: 100px; }
-    .section-title { font-size: 28px; }
-    .grid { grid-template-columns: 1fr; padding: 0 20px; }
-    .terminal-grid { grid-template-columns: 1fr; padding: 0 20px; }
+    * { cursor: auto !important; }
 }
 </style>
 </head>
 
-<body id="top">
+<body>
 
 <div id="loader">
     <img src="Ve.png" class="loader-logo" alt="VEAR">
@@ -294,27 +385,29 @@ footer { padding: 100px 20px; background: #00040a; text-align: center; border-to
 <div id="particles-js"></div>
 <div id="notification">SYSTEM_READY</div>
 
-<button onclick="scrollToTop()" id="mobileTopBtn">↑</button>
-
 <nav class="navbar" id="mainNav">
     <img src="Ve.png" alt="VEAR Logo">
     <div class="nav-links">
-        <a href="#top">Home</a>
+        <a href="home">Home</a>
         <a href="collection.html">Collection</a>
         <a href="philosophy">Philosophy</a>
-        <a href="the founders">Founder</a>
+        <a href="the founders">founder</a>
         <a href="terminal.html">Uplink</a>
     </div>
 </nav>
 
-<section class="hero-slider">
+<section class="hero-slider" id="home">
     <div class="slide active">
         <h1>NO AI, TRUE ART</h1>
-        <p>AI can mimic patterns, but it cannot understand intent. VEAR products are born from sketches and digital craftsmanship.</p>
+        <p>AI can mimic patterns, but it cannot understand intent. VEAR products are born from sketches, sweat, and digital craftsmanship.</p>
     </div>
     <div class="slide">
         <h1>COLLABORATION</h1>
-        <p>Partnerships involving Generative AI will be PERMANENTLY RESTRICTED. Human creativity is our currency.</p>
+        <p>Partnerships involving Generative AI will be PERRMANENTLY RESTRICTED. Human creativity is our only currency.</p>
+    </div>
+    <div class="slide">
+        <h1>AUTHENTIC THREADS</h1>
+        <p>Limited run releases. Once they are gone, the digital blueprint is archived forever. No reprints, no dilutions.</p>
     </div>
 </section>
 
@@ -324,42 +417,128 @@ footer { padding: 100px 20px; background: #00040a; text-align: center; border-to
         <div class="card reveal">
             <div class="card-img-container"><img src="hoodie.jpg" alt="V1" onerror="this.style.opacity='0.1'"></div>
             <div class="info">
-                <h3>V1_PROTOTYPE</h3>
-                <span class="price">$75.00</span>
-                <p>Heavyweight cotton. Hand-drawn circuitry design.</p>
-                <button class="buy-btn" onclick="buyProduct('V1')">RESERVE UNIT</button>
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-img-container"><img src="cgerbcap.jpg" alt="Cap" onerror="this.style.opacity='0.1'"></div>
+            <div class="info">
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-img-container"><img src="tee.jpg" alt="Tee" onerror="this.style.opacity='0.1'"></div>
+            <div class="info">
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-img-container"><img src="jacket.jpg" alt="Shell" onerror="this.style.opacity='0.1'"></div>
+            <div class="info">
+                <h3>test</h3>
+                <span class="price">test</span>
+                <p>test</p>
+                <button class="buy-btn" onclick="buyProduct('test')">RESERVE UNIT</button>
             </div>
         </div>
     </div>
 </section>
 
-<section class="terminal-section" id="collabrations">
+<section class="spotlight" id="owner">
     <div class="container">
-        <h2 class="section-title">UPLINK PROTOCOL</h2>
+        <div class="artist-flex">
+            <div class="artist-image reveal">
+                <svg width="100%" height="500" viewBox="0 0 500 500">
+                    <defs>
+                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#003a70;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4da6ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="220" fill="none" stroke="#4da6ff" stroke-width="0.5" opacity="0.1" />
+                    <circle cx="250" cy="250" r="180" fill="none" stroke="#4da6ff" stroke-width="2" opacity="0.2" />
+                    <circle cx="250" cy="250" r="125" fill="url(#blueGrad)" fill-opacity="0.3" stroke="#fff" stroke-width="3" />
+                    <path d="M250,10 L295,205 L490,250 L295,295 L250,490 L205,295 L10,250 L205,205 Z" 
+                          fill="url(#blueGrad)" fill-opacity="0.6" stroke="#4da6ff" stroke-width="4" />
+                    <g transform="translate(250,250)">
+                        <circle cx="0" cy="-200" r="6" fill="#4da6ff" />
+                        <circle cx="0" cy="200" r="6" fill="#4da6ff" />
+                        <circle cx="200" cy="0" r="6" fill="#4da6ff" />
+                        <circle cx="-200" cy="0" r="6" fill="#4da6ff" />
+                        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="30s" repeatCount="indefinite" />
+                    </g>
+                    <text x="175" y="490" fill="#4da6ff" font-size="9" letter-spacing="12" opacity="0.6">CREATOR_IDENTITY_V1</text>
+                </svg>
+            </div>
+            <div class="artist-info reveal">
+                <h2>CREATOR: HASNAIN</h2>
+                <p>Coding is an art form. Design is a language. At VEAR, we merge the two. Every pixel and every stitch is a deliberate choice.</p>
+                <p style="margin-top:40px">By supporting VEAR, you are voting for a future where humans stay at the center of the creative economy. We don't use "prompts". We use passion.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="collabration.html" id="collabrations">
+    <div class="container">
+        <h2 class="section-title" style="margin-bottom: 50px;">UPLINK PROTOCOL</h2>
         <div class="terminal-grid">
             <div class="terminal-card reveal">
                 <div class="terminal-header">
-                    <h3>[COLLABORATION]</h3>
+                    <h3>[COLLABORATION-PORTAL]</h3>
                     <div class="status-indicator"><div class="status-dot"></div> ENCRYPTED</div>
                 </div>
                 <input id="name" placeholder="> DESIGNER_ID_">
-                <input id="email" placeholder="> COMM_LINK_">
-                <textarea id="message" rows="4" placeholder="> INPUT_DATA_"></textarea>
-                <button class="terminal-btn" onclick="sendMessage()">EXECUTE_UPLINK</button>
+                <input id="email" placeholder="> COMM_LINK_EMAIL_">
+                <textarea id="message" rows="4" placeholder="> INPUT_COLLAB_PROPOSAL_DATA_"></textarea>
+                <button class="terminal-btn" id="sendBtn" onclick="sendMessage()">EXECUTE_UPLINK</button>
+            </div>
+            <div class="reveal">
+                <div class="feedbacks">
+                    <h3>[FEEDBACKS]</h3>
+                    <div class="status-indicator"><div class="status-dot"></div> SECURE_LOG</div>
+                </div>
+                <input id="reportName" placeholder="> VISITOR_UID_">
+                <textarea id="reportMessage" rows="7" placeholder="> RECORD_FEEDBACK_LOG_ENTRIES_"></textarea>
+                <button class="terminal-btn" id="reportBtn" onclick="sendReport()">COMMIT_LOG</button>
             </div>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 VEAR GLOBAL SYSTEMS. HUMAN MADE.</p>
+    <p>© 2026 VEAR GLOBAL SYSTEMS. ALL PRODUCTS PROTECTED BY INTELLECTUAL COPYRIGHT.</p>
+    <p style="font-size: 10px; margin-top: 40px; color: #334155; letter-spacing: 5px;">ENCRYPTED VIA PURE RAINBOLT CORE • HASNAIN DESIGNED</p>
 </footer>
+
+<div class="huge-data-block">
+    <script>
+        const VEAR_MASSIVE_METADATA = {
+            brand: "VEAR",
+            lead: "HASNAIN",
+            philosophy: "ANTI-AI",
+            blueprintArchive: Array(150000).fill("DESIGN_NODE_O1_X_O2_AUTHENTICITY_VERIFIED_").join("")
+        };
+    </script>
+</div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-/* CORE SYSTEM LOGIC */
+/* CORE LOGIC */
 
-// 1. Loading Sequence
+// --- ADDED FROM SCRIPT 2: LOADER SEQUENCE ---
 const statusMessages = [
     "> INITIALIZING_UPLINK_",
     "> DECODING_ART_ASSETS_",
@@ -383,63 +562,101 @@ window.addEventListener('load', () => {
         setTimeout(() => { loader.style.display = 'none'; }, 800);
     }, 2000);
 });
+// --- END LOADER LOGIC ---
 
-// 2. Cursor System
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursor-follower');
+
 document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
     cursor.style.transform = `translate(-50%, -50%)`;
-    follower.style.left = e.clientX + 'px'; follower.style.top = e.clientY + 'px';
+
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
     follower.style.transform = `translate(-50%, -50%)`;
 });
 
-// 3. Particles
+document.addEventListener('mousedown', () => {
+    cursor.style.transform = `translate(-50%, -50%) scale(0.8)`;
+    cursor.style.background = "rgba(77, 166, 255, 0.6)";
+});
+document.addEventListener('mouseup', () => {
+    cursor.style.transform = `translate(-50%, -50%) scale(1)`;
+    cursor.style.background = "rgba(77, 166, 255, 0.3)";
+});
+
 particlesJS("particles-js",{
     particles:{
-        number:{value:60},
+        number:{value:80},
         color:{value:"#4da6ff"},
-        opacity:{value:0.2},
+        opacity:{value:0.3},
         size:{value:2},
-        line_linked:{enable:true, distance:150, color:"#4da6ff", opacity:0.4, width:1},
-        move:{speed:1.5}
+        line_linked:{enable:true, distance:150, color:"#4da6ff", opacity:1, width:1.5},
+        move:{speed:2}
     }
 });
 
-// 4. Scroll Logic (Mobile Top Button)
-const topBtn = document.getElementById("mobileTopBtn");
-window.onscroll = function() {
+function notify(text) {
+    const box = document.getElementById('notification');
+    box.innerText = text;
+    box.classList.add('show');
+    setTimeout(() => box.classList.remove('show'), 4000);
+}
+
+window.addEventListener('scroll', () => {
     const nav = document.getElementById('mainNav');
     if (window.scrollY > 100) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
+});
 
-    // Show button only on small screens + scroll depth
-    if (window.innerWidth <= 900) {
-        if (document.documentElement.scrollTop > 600) topBtn.style.opacity = "1";
-        else topBtn.style.opacity = "0";
-    }
-};
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+}, 6000);
 
-function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
-
-// 5. Reveal Observer
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
+    entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('active');
+    });
 }, { threshold: 0.1 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-function notify(text) {
-    const box = document.getElementById('notification');
-    box.innerText = text; box.classList.add('show');
-    setTimeout(() => box.classList.remove('show'), 3000);
-}
-
-function buyProduct(name) { notify(`UNIT_RESERVED: ${name}`); }
+function buyProduct(name) { notify(`UNIT_RESERVED: ${name.toUpperCase()}`); }
 
 async function sendMessage() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    if(!name || !email || !message) return notify("DATA ERROR: FIELDS EMPTY");
+    
     notify("TRANSMITTING...");
-    // Webhook logic here...
-    setTimeout(() => notify("UPLINK_SUCCESS"), 1000);
+    try {
+        await fetch("https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ content: `🚀 **COLLAB REQUEST**\nName: ${name}\nEmail: ${email}\nMessage: ${message}` })
+        });
+        notify("collabration sent");
+    } catch (e) { notify("UPLINK_FAILURE"); }
+}
+
+async function sendReport() {
+    const name = document.getElementById("reportName").value.trim();
+    const message = document.getElementById("reportMessage").value.trim();
+    if(!name || !message) return notify("DATA_ERROR: no message/name were filled");
+
+    try {
+        await fetch("https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ content: `⚠️ **NEW FEEDBACK!**\nUser: ${name}\nLog: ${message}` })
+        });
+        notify("feedback sent");
+    } catch (e) { notify("feedback sent"); }
 }
 </script>
 </body>
