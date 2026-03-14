@@ -25,13 +25,13 @@ body{
     min-height: 100vh;
 }
 
-/* --- ADDED FROM SCRIPT 2: SPLASH SCREEN SYSTEM --- */
+/* --- INTEGRATED FROM SCRIPT 2: SPLASH SCREEN SYSTEM --- */
 #loader {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: #000;
-    z-index: 20000; /* Higher than navbar */
+    z-index: 10000;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,7 +57,7 @@ body{
     50% { transform: scale(1.1); opacity: 1; }
 }
 
-/* --- SCRIPT 1 ORIGINAL STYLES --- */
+/* --- CUSTOM CURSOR SYSTEM --- */
 #cursor {
     width: 20px; height: 20px;
     background: rgba(77, 166, 255, 0.3);
@@ -90,6 +90,7 @@ body{
     z-index: -1;
 }
 
+/* --- NAVIGATION --- */
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -129,6 +130,7 @@ body{
 }
 .nav-links a:hover{ color: #4da6ff; text-shadow: 0 0 10px #4da6ff; }
 
+/* --- HERO SYSTEM --- */
 .hero-slider{
     position: relative;
     height: 100vh;
@@ -166,9 +168,11 @@ body{
     letter-spacing: 2px;
 }
 
+/* --- REVEAL ANIMATIONS --- */
 .reveal{ opacity: 0; transform: translateY(80px); transition: 1.2s all ease-out; }
 .reveal.active{ opacity: 1; transform: translateY(0); }
 
+/* --- PRODUCT GRID --- */
 .products {
     padding: 200px 0;
     margin-top: 200px;
@@ -239,12 +243,14 @@ body{
     box-shadow: 0 0 30px rgba(77, 166, 255, 0.4);
 }
 
+/* --- ARTIST SPOTLIGHT --- */
 .spotlight { background: rgba(0, 0, 0, 0.5); padding: 300px 0; margin-top: 300px; }
 .artist-flex { display: flex; align-items: center; gap: 100px; flex-wrap: wrap; }
 .artist-image { flex: 1; min-width: 400px; }
 .artist-info { flex: 1; min-width: 400px; }
 .artist-info h2 { font-size: 56px; color: #fff; margin-bottom: 40px; letter-spacing: 5px; }
 
+/* --- TERMINAL FORMS --- */
 .terminal-section {
     padding: 150px 0;
     background: linear-gradient(to bottom, transparent, rgba(0, 58, 112, 0.1), transparent);
@@ -338,6 +344,7 @@ body{
     box-shadow: 0 0 20px #4da6ff;
 }
 
+/* --- FOOTER --- */
 footer {
     padding: 150px 20px;
     background: #00040a;
@@ -345,6 +352,7 @@ footer {
     border-top: 1px solid rgba(77, 166, 255, 0.1);
 }
 
+/* NOTIFICATION */
 #notification {
     position: fixed;
     bottom: 30px; right: 30px;
@@ -360,6 +368,7 @@ footer {
 }
 #notification.show { transform: translateY(0); }
 
+/* DATA BLOCK */
 .huge-data-block { display: none; }
 
 @media(max-width: 900px) {
@@ -373,7 +382,7 @@ footer {
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <div id="loader">
     <img src="Ve.png" class="loader-logo" alt="VEAR">
@@ -388,7 +397,7 @@ footer {
 <nav class="navbar" id="mainNav">
     <img src="Ve.png" alt="VEAR Logo">
     <div class="nav-links">
-        <a href="home">Home</a>
+        <a href="#top">Home</a>
         <a href="collection.html">Collection</a>
         <a href="philosophy">Philosophy</a>
         <a href="the founders">founder</a>
@@ -403,7 +412,7 @@ footer {
     </div>
     <div class="slide">
         <h1>COLLABORATION</h1>
-        <p>Partnerships involving Generative AI will be PERRMANENTLY RESTRICTED. Human creativity is our only currency.</p>
+        <p>Partnerships involving Generative AI will be PERMANENTLY RESTRICTED. Human creativity is our only currency.</p>
     </div>
     <div class="slide">
         <h1>AUTHENTIC THREADS</h1>
@@ -491,7 +500,7 @@ footer {
     </div>
 </section>
 
-<section class="collabration.html" id="collabrations">
+<section class="terminal-section" id="collabrations">
     <div class="container">
         <h2 class="section-title" style="margin-bottom: 50px;">UPLINK PROTOCOL</h2>
         <div class="terminal-grid">
@@ -505,13 +514,14 @@ footer {
                 <textarea id="message" rows="4" placeholder="> INPUT_COLLAB_PROPOSAL_DATA_"></textarea>
                 <button class="terminal-btn" id="sendBtn" onclick="sendMessage()">EXECUTE_UPLINK</button>
             </div>
-            <div class="reveal">
-                <div class="feedbacks">
-                    <h3>[FEEDBACKS]</h3>
+
+            <div class="terminal-card reveal">
+                <div class="terminal-header">
+                    <h3>[FEEDBACK-LOGS]</h3>
                     <div class="status-indicator"><div class="status-dot"></div> SECURE_LOG</div>
                 </div>
                 <input id="reportName" placeholder="> VISITOR_UID_">
-                <textarea id="reportMessage" rows="7" placeholder="> RECORD_FEEDBACK_LOG_ENTRIES_"></textarea>
+                <textarea id="reportMessage" rows="4" placeholder="> RECORD_FEEDBACK_LOG_ENTRIES_"></textarea>
                 <button class="terminal-btn" id="reportBtn" onclick="sendReport()">COMMIT_LOG</button>
             </div>
         </div>
@@ -536,9 +546,7 @@ footer {
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-/* CORE LOGIC */
-
-// --- ADDED FROM SCRIPT 2: LOADER SEQUENCE ---
+/* --- LOADER LOGIC FROM SCRIPT 2 --- */
 const statusMessages = [
     "> INITIALIZING_UPLINK_",
     "> DECODING_ART_ASSETS_",
@@ -562,8 +570,8 @@ window.addEventListener('load', () => {
         setTimeout(() => { loader.style.display = 'none'; }, 800);
     }, 2000);
 });
-// --- END LOADER LOGIC ---
 
+/* --- ORIGINAL SCRIPT 1 LOGIC --- */
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursor-follower');
 
@@ -640,23 +648,29 @@ async function sendMessage() {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ content: `🚀 **COLLAB REQUEST**\nName: ${name}\nEmail: ${email}\nMessage: ${message}` })
         });
-        notify("collabration sent");
+        notify("COLLABORATION SENT");
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
     } catch (e) { notify("UPLINK_FAILURE"); }
 }
 
 async function sendReport() {
     const name = document.getElementById("reportName").value.trim();
     const message = document.getElementById("reportMessage").value.trim();
-    if(!name || !message) return notify("DATA_ERROR: no message/name were filled");
+    if(!name || !message) return notify("DATA_ERROR: FIELDS EMPTY");
 
+    notify("TRANSMITTING...");
     try {
         await fetch("https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ content: `⚠️ **NEW FEEDBACK!**\nUser: ${name}\nLog: ${message}` })
         });
-        notify("feedback sent");
-    } catch (e) { notify("feedback sent"); }
+        notify("FEEDBACK SENT");
+        document.getElementById("reportName").value = "";
+        document.getElementById("reportMessage").value = "";
+    } catch (e) { notify("UPLINK_FAILURE"); }
 }
 </script>
 </body>
