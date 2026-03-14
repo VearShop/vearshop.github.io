@@ -176,6 +176,7 @@ body{
 .products {
     padding: 200px 0;
     margin-top: 200px;
+    scroll-margin-top: 100px; /* Offset for navbar */
 }
 .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 .section-title {
@@ -244,7 +245,12 @@ body{
 }
 
 /* --- ARTIST SPOTLIGHT --- */
-.spotlight { background: rgba(0, 0, 0, 0.5); padding: 300px 0; margin-top: 300px; }
+.spotlight { 
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 300px 0; 
+    margin-top: 300px; 
+    scroll-margin-top: 100px;
+}
 .artist-flex { display: flex; align-items: center; gap: 100px; flex-wrap: wrap; }
 .artist-image { flex: 1; min-width: 400px; }
 .artist-info { flex: 1; min-width: 400px; }
@@ -254,6 +260,7 @@ body{
 .terminal-section {
     padding: 150px 0;
     background: linear-gradient(to bottom, transparent, rgba(0, 58, 112, 0.1), transparent);
+    scroll-margin-top: 100px;
 }
 .terminal-grid {
     display: grid;
@@ -398,10 +405,9 @@ footer {
     <img src="Ve.png" alt="VEAR Logo">
     <div class="nav-links">
         <a href="#top">Home</a>
-        <a href="collection.html">Collection</a>
-        <a href="philosophy">Philosophy</a>
-        <a href="the founders">founder</a>
-        <a href="terminal.html">Uplink</a>
+        <a href="#products">Collection</a>
+        <a href="#owner">Philosophy</a>
+        <a href="#owner">founder</a> <a href="#collabrations">Uplink</a>
     </div>
 </nav>
 
@@ -533,20 +539,9 @@ footer {
     <p style="font-size: 10px; margin-top: 40px; color: #334155; letter-spacing: 5px;">ENCRYPTED VIA PURE RAINBOLT CORE • HASNAIN DESIGNED</p>
 </footer>
 
-<div class="huge-data-block">
-    <script>
-        const VEAR_MASSIVE_METADATA = {
-            brand: "VEAR",
-            lead: "HASNAIN",
-            philosophy: "ANTI-AI",
-            blueprintArchive: Array(150000).fill("DESIGN_NODE_O1_X_O2_AUTHENTICITY_VERIFIED_").join("")
-        };
-    </script>
-</div>
-
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-/* --- LOADER LOGIC FROM SCRIPT 2 --- */
+/* LOADER SEQUENCE */
 const statusMessages = [
     "> INITIALIZING_UPLINK_",
     "> DECODING_ART_ASSETS_",
@@ -571,7 +566,7 @@ window.addEventListener('load', () => {
     }, 2000);
 });
 
-/* --- ORIGINAL SCRIPT 1 LOGIC --- */
+/* CORE SCRIPT 1 LOGIC */
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursor-follower');
 
@@ -579,19 +574,9 @@ document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
     cursor.style.transform = `translate(-50%, -50%)`;
-
     follower.style.left = e.clientX + 'px';
     follower.style.top = e.clientY + 'px';
     follower.style.transform = `translate(-50%, -50%)`;
-});
-
-document.addEventListener('mousedown', () => {
-    cursor.style.transform = `translate(-50%, -50%) scale(0.8)`;
-    cursor.style.background = "rgba(77, 166, 255, 0.6)";
-});
-document.addEventListener('mouseup', () => {
-    cursor.style.transform = `translate(-50%, -50%) scale(1)`;
-    cursor.style.background = "rgba(77, 166, 255, 0.3)";
 });
 
 particlesJS("particles-js",{
@@ -633,14 +618,11 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-function buyProduct(name) { notify(`UNIT_RESERVED: ${name.toUpperCase()}`); }
-
 async function sendMessage() {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
     if(!name || !email || !message) return notify("DATA ERROR: FIELDS EMPTY");
-    
     notify("TRANSMITTING...");
     try {
         await fetch("https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON", {
@@ -649,9 +631,6 @@ async function sendMessage() {
             body: JSON.stringify({ content: `🚀 **COLLAB REQUEST**\nName: ${name}\nEmail: ${email}\nMessage: ${message}` })
         });
         notify("COLLABORATION SENT");
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
     } catch (e) { notify("UPLINK_FAILURE"); }
 }
 
@@ -659,7 +638,6 @@ async function sendReport() {
     const name = document.getElementById("reportName").value.trim();
     const message = document.getElementById("reportMessage").value.trim();
     if(!name || !message) return notify("DATA_ERROR: FIELDS EMPTY");
-
     notify("TRANSMITTING...");
     try {
         await fetch("https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3", {
@@ -668,8 +646,6 @@ async function sendReport() {
             body: JSON.stringify({ content: `⚠️ **NEW FEEDBACK!**\nUser: ${name}\nLog: ${message}` })
         });
         notify("FEEDBACK SENT");
-        document.getElementById("reportName").value = "";
-        document.getElementById("reportMessage").value = "";
     } catch (e) { notify("UPLINK_FAILURE"); }
 }
 </script>
